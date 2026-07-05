@@ -32,6 +32,7 @@ public class QuizWindow extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
+        getContentPane().setBackground(Color.WHITE);
 
         initializeComponents();
 

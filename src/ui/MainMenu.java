@@ -45,7 +45,14 @@ public class MainMenu extends JFrame {
 
         highScoreButton = new JButton("High Scores");
 
+        highScoreButton.addActionListener(e -> {
+            new HighScoreScreen();
+        });
+
         instructionsButton = new JButton("Instructions");
+        instructionsButton.addActionListener(e -> {
+            new InstructionsScreen();
+        });
 
         exitButton = new JButton("Exit");
 
