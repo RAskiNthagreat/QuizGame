@@ -1,38 +1,23 @@
 package main;
 
-import dao.QuestionDAO;
-import models.Question;
-
-import java.util.List;
+import java.sql.Connection;
+import database.DatabaseConnection;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        QuestionDAO dao = new QuestionDAO();
+        System.out.println("=================================");
+        System.out.println("       JAVA QUIZ GAME");
+        System.out.println("=================================");
 
-        List<Question> questions =
-                dao.getQuestionsByDifficulty("Easy");
+        Connection connection = DatabaseConnection.getConnection();
 
-        System.out.println("Easy Questions Found: "
-                + questions.size());
-
-        for (Question question : questions) {
-
-            System.out.println("---------------------------");
-
-            System.out.println(question.getQuestion());
-
-            System.out.println("A. " + question.getOptionA());
-
-            System.out.println("B. " + question.getOptionB());
-
-            System.out.println("C. " + question.getOptionC());
-
-            System.out.println("D. " + question.getOptionD());
-
+        if (connection != null) {
+            System.out.println("Connection test successful!");
+            DatabaseConnection.closeConnection(connection);
+        } else {
+            System.out.println("Connection test failed.");
         }
-
     }
-
 }
