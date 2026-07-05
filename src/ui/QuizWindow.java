@@ -141,12 +141,12 @@ public class QuizWindow extends JFrame {
 
         if (quizManager.isQuizFinished()) {
 
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Quiz Finished!\n\n" +
-                            "Score: " + quizManager.getScore() + "/" + quizManager.getTotalQuestions() +
-                            "\nCorrect: " + quizManager.getCorrectAnswers() +
-                            "\nIncorrect: " + quizManager.getIncorrectAnswers()
+            new ui.ResultScreen(
+                quizManager.getPlayerName(),
+                quizManager.getDifficulty(),
+                quizManager.getScore(),
+                quizManager.getCorrectAnswers(),
+                quizManager.getIncorrectAnswers()
             );
 
             dispose();
