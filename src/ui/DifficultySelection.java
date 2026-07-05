@@ -31,7 +31,7 @@ public class DifficultySelection extends JFrame {
 
         JPanel panel = new JPanel(new GridLayout(4, 2, 10, 10));
 
-        panel.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         panel.add(new JLabel("Player Name:"));
 
@@ -41,8 +41,7 @@ public class DifficultySelection extends JFrame {
 
         panel.add(new JLabel("Difficulty:"));
 
-        difficultyComboBox =
-                new JComboBox<>(new String[]{"Easy","Medium","Hard"});
+        difficultyComboBox = new JComboBox<>(new String[]{"Easy", "Medium", "Hard"});
 
         panel.add(difficultyComboBox);
 
@@ -56,6 +55,25 @@ public class DifficultySelection extends JFrame {
 
         add(panel);
 
-    }
+        backButton.addActionListener(e -> {
+            new MainMenu();
+            dispose();
+        });
 
+        startButton.addActionListener(e -> {
+
+            String playerName = playerNameField.getText().trim();
+
+            if (playerName.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please enter your name.");
+                return;
+            }
+
+            String difficulty = difficultyComboBox.getSelectedItem().toString();
+
+            new QuizWindow(playerName, difficulty);
+
+            dispose();
+        });
+    }
 }
