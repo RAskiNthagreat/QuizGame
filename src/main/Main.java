@@ -1,23 +1,19 @@
 package main;
 
-import java.sql.Connection;
-import database.DatabaseConnection;
+import javax.swing.SwingUtilities;
+import ui.MainMenu;
+import java.awt.event.ActionListener;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("=================================");
-        System.out.println("       JAVA QUIZ GAME");
-        System.out.println("=================================");
+        SwingUtilities.invokeLater(() -> {
 
-        Connection connection = DatabaseConnection.getConnection();
+            new MainMenu();
 
-        if (connection != null) {
-            System.out.println("Connection test successful!");
-            DatabaseConnection.closeConnection(connection);
-        } else {
-            System.out.println("Connection test failed.");
-        }
+        });
+
     }
+
 }
